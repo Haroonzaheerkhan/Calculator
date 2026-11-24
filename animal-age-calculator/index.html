@@ -1,422 +1,814 @@
-```html
-  <p>
-    Our <strong>animal age calculator</strong> provides an easy way to estimate your dog's age in
-    human years. This can help you understand whether your dog is in the puppy, adult, or senior
-    stage of life. A dog age calculator is useful for anyone searching for <strong>dog years to
-    human years</strong>, <strong>dog age in human years</strong>, or a simple way to compare a
-    pet's age with their own.
-  </p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Animal Age Calculator – Compare Dog, Cat, Parrot & All Pet Ages with Your Age | MyCalculatorPal</title>
+  <meta name="description" content="Easily compare your pet’s age with yours! Our free Animal Age Calculator works for dogs, cats, parrots, hamsters, rabbits, and all other pets. Instant, accurate, and no sign-up required.">
 
-  <p>
-    Understanding your dog's approximate human-equivalent age can also make it easier to think about
-    changes in behavior, activity, nutrition, exercise, and general care as your pet gets older.
-    Remember that an age conversion is an estimate rather than a veterinary diagnosis.
-  </p>
+  <!-- ✅ Paste your Google AdSense verification meta tag here -->
+  <meta name="google-adsense-account" content="ca-pub-8850694506252841">
 
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8850694506252841"
+     crossorigin="anonymous"></script>
+
+    <!-- ✅ Add your favicon right here -->
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://mycalculatorpal.com/animal-age-calculator/" />
+
+  <!-- Robots Meta Tag -->
+  <meta name="robots" content="index, follow" />
+
+  <!-- Optional SEO Enhancements -->
+  <meta name="author" content="MyCalculatorPal">
+  <meta name="keywords" content="animal age calculator, pet age calculator, dog age in human years, cat age calculator, convert pet age, animal years to human years">
+  
+   <!-- ✅ Add this line below -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+/* Extra CSS specific to this calculator (main style in style.css handles general styling) */
+
+/* General Reset and Fonts */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', 'Roboto', sans-serif;
+  background: #f4f6f9;
+  color: #222;
+  line-height: 1.7;
+  text-align: center;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 25px;
+  background: linear-gradient(90deg, #0a0a0a, #1b1b1b);
+  color: #fff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  position: relative;
+  z-index: 1001; /* keeps header above side ads */
+}
+
+header .logo a {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+}
+
+header nav {
+  display: flex;
+  gap: 18px;
+}
+
+header nav a {
+  color: #eee;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+header nav a:hover {
+  text-decoration: underline;
+  color: #00bcd4;
+  text-shadow: 0 0 8px #00bcd4;
+}
+
+/* Hero Section */
+.hero {
+  padding: 60px 20px;
+}
+
+.hero h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.6rem;
+  margin-bottom: 10px;
+  color: #111;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  color: #555;
+}
+  
+/* Calculator Section */
+.calculator .card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 14px;
+  padding: 25px 25px;
+  width: 100%;
+  max-width: 520px;
+  margin: 35px auto;
+  text-align: left;
+  box-shadow: 0 0 20px rgba(0, 188, 212, 0.2);
+  transition: all 0.3s ease;
+}
+  .calculator .card:hover {
+  box-shadow: 0 0 25px rgba(0, 188, 212, 0.35);
+  transform: translateY(-3px);
+}
+
+.calc-inputs label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #333;
+}
+
+.calc-inputs .input-field,
+.calculator input[type="date"] {
+  width: 100%;
+  max-width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  background: #fafafa;
+  transition: border 0.3s;
+  box-sizing: border-box;
+}
+
+  .calc-inputs .input-field:focus {
+  border: 1px solid #00bcd4;
+  outline: none;
+}
+
+.calculate-btn {
+  width: 100%;
+  padding: 14px 20px;
+   background: linear-gradient(90deg, #00bcd4, #0097a7);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(0, 188, 212, 0.3);
+  transition: all 0.3s ease;
+}
+
+.calculate-btn:hover {
+  background: linear-gradient(90deg, #0097a7, #007c91);
+  box-shadow: 0 0 20px rgba(0, 188, 212, 0.6);
+  transform: translateY(-2px);
+}
+
+/* Results Box */
+.calc-results {
+  background: rgba(255,255,255,0.97);
+  border-radius: 14px;
+  padding: 25px;
+  width: 100%;
+  max-width: 520px;
+  box-shadow: 0 0 20px rgba(0, 188, 212, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 35px auto;
+}
+
+.calc-results h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #111;
+}
+
+.calc-results p {
+  background: #f7f9fb;
+  border-radius: 10px;
+  padding: 12px 15px;
+  font-size: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* Spinner Loader */
+#spinner {
+  display: none;
+  margin: 20px auto;
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid #111;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Ad Banners (inline, in-page) */
+.ad-banner {
+  text-align: center;
+  padding: 25px 0;
+}
+
+.ad-placeholder {
+  display: inline-block;
+  background: #f0f0f0;
+  padding: 40px;
+  border: 1px dashed #ccc;
+  font-size: 0.9rem;
+  color: #888;
+  border-radius: 12px;
+}
+
+/* ✅ Side Ads (fixed on desktop) */
+.side-ad {
+  position: fixed;
+  top: 80px; /* below header */
+  width: auto; /* let AdSense control width */
+  max-width: 160px; /* standard skyscraper */
+  min-height: 600px; /* standard height */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 1000;
+}
+
+.side-ad.left-ad {
+  left: 0;
+}
+
+.side-ad.right-ad {
+  right: 0;
+}
+
+/* Blog Section */
+.blog {
+  padding: 45px 25px;
+  max-width: 820px;
+  margin: 40px auto;
+  background: rgba(255,255,255,0.95);
+  border-radius: 14px;
+  box-shadow: 0 0 20px rgba(0, 188, 212, 0.2);
+  text-align: left;
+}
+
+.blog h2 {
+  margin-bottom: 20px;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+}
+
+.blog p {
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+/* FAQs Section */
+.faqs {
+  padding: 45px 25px;
+  max-width: 820px;
+  margin: 40px auto;
+  background: rgba(255,255,255,0.95);
+  border-radius: 14px;
+  box-shadow: 0 0 20px rgba(0, 188, 212, 0.2);
+}
+
+.faqs h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #111;
+}
+
+.faq-item {
+  margin-bottom: 18px;
+}
+
+.faq-question {
+  width: 100%;
+  padding: 14px 16px;
+  border: none;
+  border-radius: 8px;
+  background: #fff;
+  text-align: left;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+}
+
+.faq-question:hover {
+  background: #e0f7fa;
+  box-shadow: 0 0 10px rgba(0, 188, 212, 0.3);
+}
+
+.faq-answer {
+  padding: 12px 16px;
+  margin-top: 5px;
+  background: #f7f9fb;
+  border-left: 3px solid #00bcd4;
+  border-radius: 8px;
+  display: none;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #000;
+  color: #fff;
+  font-size: 0.85rem;
+  position: relative;
+  z-index: 1001; /* keep above ads */
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 25px;
+  background: #0a0a0a;
+  color: #fff;
+  font-size: 0.9rem;
+  letter-spacing: 0.3px;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
+}
+
+footer nav a {
+  color: #ddd;
+  margin: 0 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+footer nav a:hover {
+  color: #00bcd4;
+  text-shadow: 0 0 6px #00bcd4;
+}
+  
+/* Hide hamburger in desktop */
+.hamburger {
+  display: none;
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  header nav {
+    display: none;
+    flex-direction: column;
+    background: #000;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 200px;
+    padding: 10px;
+    text-align: center;
+  }
+
+  header nav.active {
+    display: flex;
+  }
+
+  .calculator .card,
+  .calc-results,
+  .blog,
+  .faqs,
+  .ad-placeholder {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    max-width: 100%;
+    width: 90%;
+    display: block;
+    box-sizing: border-box;
+  }
+
+  img, iframe {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  /* ✅ Hide side ads on mobile */
+  .side-ad {
+    display: none !important;
+  }
+}
+
+/* Related Calculators Section */
+.related-calculators {
+  padding: 45px 25px;
+  max-width: 820px;
+  margin: 40px auto;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 14px;
+  box-shadow: 0 0 20px rgba(0, 188, 212, 0.2);
+  text-align: center;
+}
+
+.related-calculators h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.7rem;
+  margin-bottom: 25px;
+  color: #111;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.related-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.related-links a {
+  background: linear-gradient(90deg, #00bcd4, #0097a7);
+  color: #fff;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  padding: 12px 25px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 10px rgba(0, 188, 212, 0.3);
+}
+
+.related-links a:hover {
+  background: linear-gradient(90deg, #0097a7, #007c91);
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(0, 188, 212, 0.6);
+}
+
+/* 🚫 TEMPORARY — Hide ALL ads until AdSense is approved */
+.ad-banner,
+.side-ad {
+  display: none !important;
+}
+/* ✅ Delete the block above when AdSense is ready */
+</style>
+  
+<!-- Header -->
+<header>
+  <div class="logo"><a href="https://mycalculatorpal.com/">MyCalculatorPal</a></div>
+  <nav id="nav-menu">
+
+    <!-- Desktop Dark Mode Toggle (before Home) -->
+    <button id="darkModeToggle" class="desktop-toggle">🌙</button>
+    
+    <a href="https://mycalculatorpal.com/">Home</a>
+    <a href="https://mycalculatorpal.com/about.html">About</a>
+    <a href="https://mycalculatorpal.com/contact.html">Contact</a>
+  </nav>
+
+   <!-- Mobile Dark Mode Toggle first -->
+  <button id="darkModeToggleMobile" class="mobile-toggle">🌙</button>
+  
+  <div class="hamburger" id="hamburger">☰</div>
+</header>
+
+<!-- Side Ads -->
+<div class="side-ad left-ad">
+  <div class="ad-placeholder">[Left Ad]</div>
+</div>
+<div class="side-ad right-ad">
+  <div class="ad-placeholder">[Right Ad]</div>
+</div>
+
+<!-- Wrap main content -->
+<div class="page-content">
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Animal Age Calculator</h1>
+    <p>Convert your pet’s age into human years and compare it with your own age.</p>
+  </section>
+
+  <!-- Calculator Section -->
+  <section class="calculator">
+
+    <!-- Spinner (Initially Hidden) -->
+    <div id="spinner"></div>
+
+    <!-- Results Box (Initially Hidden) -->
+    <div class="card calc-results" id="results" style="display:none;">
+      <h2>Results</h2>
+      <p id="animalAge">Animal’s Age in Human Years: </p>
+      <p id="comparison">Comparison: </p>
+      <p id="lived">Equivalent Time Lived: </p>
+    </div>
+
+    <!-- Calculator Card -->
+    <div class="card calc-inputs">
+      <label for="animal">Select Animal:</label>
+      <select id="animal" class="input-field">
+        <option value="" disabled selected>-- Select an Animal --</option>
+        <option value="dog">Dog</option>
+        <option value="cat">Cat</option>
+        <option value="rabbit">Rabbit</option>
+        <option value="horse">Horse</option>
+        <option value="snake">Snake</option>
+        <option value="parrot">Parrot</option>
+        <option value="birds">Bird (non-parrot)</option>
+        <option value="hamster">Hamster</option>
+        <option value="fish">Fish</option>
+      </select>
+
+      <label for="petAge">Your Pet’s Age (years):</label>
+      <input type="number" id="petAge" class="input-field" min="0" />
+
+      <label for="userAge">Your Age (years):</label>
+      <input type="number" id="userAge" class="input-field" min="0" />
+
+      <button id="calculateBtn" class="calculate-btn" type="button">Calculate</button>
+    </div>
+  </section>
+
+  <!-- AdSense Banner (After Results) -->
+  <section class="ad-banner">
+    <div class="ad-placeholder">[Ad Banner Here]</div>
+  </section>
+
+<!-- Final Blog Section (Full Content + Shop Buttons) -->
+<section class="blog">
+  <style>
+    .blog a {
+      color: #333; /* darker text */
+      font-weight: bold;
+      text-decoration: underline;
+    }
+    .blog a:hover {
+      color: #ff6600; /* orange hover */
+    }
+    .highlighted {
+      background-color: #fff3cd; /* soft yellow highlight */
+      transition: background-color 1.5s ease;
+    }
+    .product-box {
+      text-align: center;
+      margin: 20px 0;
+    }
+    .product-box img {
+      max-width: 200px;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+    .shop-btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 16px;
+      background: linear-gradient(90deg, #00bcd4, #0097a7);
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+    }
+    .shop-btn:hover {
+     background: linear-gradient(90deg, #0097a7, #007c91);
+     box-shadow: 0 0 20px rgba(0, 188, 212, 0.6);
+     transform: translateY(-2px);
+    }
+  </style>
+
+  <h2 id="blog-title">Discover How Old Your Dog, Cat, or Pet Really Is – And How to Keep Them Happy and Healthy</h2>
+
+  <p>Have you ever wondered how old your dog, cat, or other pets are in human years? Or maybe you're struggling to find the <a href="#best-dog-food-sensitive-stomach">best dog food for sensitive stomachs</a>, <a href="#best-cat-food-sensitive-stomach">best cat food for sensitive stomachs</a>, or <a href="#best-hamster-cages">safe hamster cages</a>? Understanding your pet’s age and needs is the first step to keeping them healthy, happy, and full of life.</p>
+
+  <!-- Table of Contents -->
+  <nav class="toc" aria-label="Article table of contents">
+    <h3>Quick Navigation</h3>
+    <ul>
+      <li><a href="#dog-age-human">How Old Is Your Dog in Human Years?</a></li>
+      <li><a href="#dog-years-why">Dog Years in Human Years: Why It Matters</a></li>
+      <li><a href="#best-chew-toys">Choosing the Best Chew Toys for Dogs</a></li>
+      <li><a href="#best-dog-food-sensitive-stomach">Best Dog Food for Sensitive Stomach</a></li>
+      <li><a href="#cat-lifespan">How Long Do Domestic Cats Live?</a></li>
+      <li><a href="#cat-age-human">1 Cat Year to Human Years</a></li>
+      <li><a href="#best-cat-food-sensitive-stomach">Best Cat Food for Sensitive Stomach</a></li>
+      <li><a href="#small-pets">Small Pets: Hamsters, Rabbits, and Beyond</a></li>
+      <li><a href="#hamster-age">Hamster Age Calculator & Charts</a></li>
+      <li><a href="#best-hamster-cages">Best Hamster Cages</a></li>
+      <li><a href="#best-toys">Best Toys for Cats, Dogs, and Small Pets</a></li>
+      <li><a href="#best-dog-treats">Best Dog Treats</a></li>
+      <li><a href="#best-cat-accessories">Most Popular Cat Accessories</a></li>
+      <li><a href="#best-foods">Feeding Your Furry and Feathered Friends</a></li>
+      <li><a href="#age-comparisons">Dog to Human Age, Cat to Human Age, & Other Pet Age Comparisons</a></li>
+      <li><a href="#conclusion">Conclusion</a></li>
+    </ul>
+  </nav>
+
+  <h3 id="dog-age-human">How Old Is Your Dog in Human Years? Understanding Dog Years</h3>
+  <p>Most pet owners ask: <em>“How old is a dog in human years?”</em> The truth is, dogs age differently depending on their breed and size. A common method is the dog to human age comparison, where smaller breeds tend to live longer than larger ones.</p>
+  <p>Knowing your dog’s age in human terms can help you:</p>
   <ul>
-    <li>Young dogs generally develop very quickly during their first years.</li>
-    <li>Adult dogs enter a more stable stage of physical and behavioral development.</li>
-    <li>Senior dogs may require additional attention to mobility, nutrition, and general wellness.</li>
-    <li>Breed and body size can influence how quickly a dog ages.</li>
+    <li>Monitor health milestones</li>
+    <li>Adjust diet and nutrition</li>
+    <li>Choose age-appropriate toys and activities</li>
   </ul>
-
+  <div class="product-box">
+    <img src="../images/dogvit.jpg" alt="Dog Multivitamins for Hip & Joints, Skin & Coat">
+    <br>
+    <a href="https://amzn.to/3KjyDRx" class="shop-btn" target="_blank">Shop Now</a>
+  </div>
 
   <h3 id="dog-years-why">Dog Years in Human Years: Why It Matters</h3>
+  <p>Calculating dog years in human years isn’t just a fun fact—it’s vital for your pet’s health. For example, a 7-year-old dog might be equivalent to a 45-year-old human. Understanding this helps you provide the right food, exercise, and veterinary care.</p>
+  <div class="product-box">
+ <img src="../images/dogvit2.jpg" alt="Dog Allergy Relief- Dog Itching Skin Relief">
+    <br>
+    <a href="https://amzn.to/4nN0KXE" class="shop-btn" target="_blank">Shop Now</a>
+  </div>
 
-  <p>
-    Calculating <strong>dog years in human years</strong> is more than an interesting comparison.
-    Knowing your dog's approximate life stage can help you better understand its changing needs.
-    A young puppy, an adult dog, and a senior dog may have very different requirements for exercise,
-    food, mental stimulation, and routine care.
-  </p>
+  <h3 id="best-dog-food-sensitive-stomach">Best Dog Food for Sensitive Stomach</h3>
+  <p>Some dogs have sensitive stomachs that require special diets. Choosing the right food can improve digestion, reduce bloating, and increase energy levels.</p>
+  <div class="product-box">
+     <img src="../images/dogsen.jpg" alt="Sensitive Stomach Dog Food">
+    <br>
+    <a href="https://amzn.to/3WbrViX" class="shop-btn" target="_blank">Shop Now</a>
+  </div>
 
-  <p>
-    For example, a seven-year-old dog should not automatically be considered equivalent to a
-    49-year-old human. Traditional “multiply by seven” calculations are easy to remember, but
-    they do not account for the faster development that occurs during the early part of a dog's
-    life.
-  </p>
-
-  <p>
-    Search terms such as <strong>how old is my dog in human years</strong>, <strong>dog age
-    calculator</strong>, <strong>dog years calculator</strong>, and <strong>dog to human age
-    calculator</strong> are all based on the same basic idea: making a pet's age easier for people
-    to understand.
-  </p>
-
-  <p>
-    An age comparison can be particularly useful when planning age-appropriate exercise, observing
-    changes in behavior, and discussing your pet's life stage with a veterinarian.
-  </p>
-
-
-  <h3 id="best-chew-toys">Understanding Your Dog's Life Stages</h3>
-
-  <p>
-    A dog's life can generally be divided into several stages, including puppyhood, adulthood, and
-    the senior years. Each stage brings different physical and behavioral changes. Instead of
-    focusing only on the number of birthdays your dog has had, it is useful to consider its overall
-    development and life stage.
-  </p>
-
-  <p>
-    <strong>Puppies</strong> experience rapid growth and development. Their early months are an
-    important period for learning, socialization, training, and establishing healthy routines.
-  </p>
-
-  <p>
-    <strong>Adult dogs</strong> are generally more physically mature and often have established
-    behavioral patterns. Regular exercise, appropriate nutrition, mental stimulation, and routine
-    veterinary care remain important throughout adulthood.
-  </p>
-
-  <p>
-    <strong>Senior dogs</strong> may gradually become less active and can experience age-related
-    changes. Paying attention to mobility, appetite, sleeping patterns, weight, and behavior can
-    help owners notice changes that may deserve professional attention.
-  </p>
-
-  <p>
-    This is why a <strong>dog age calculator</strong> can be useful as an educational starting point:
-    it gives pet owners a simple estimate of where their dog may be in its overall life cycle.
-  </p>
-
-
-  <h3 id="best-dog-food-sensitive-stomach">Dog Age, Nutrition & Daily Care</h3>
-
-  <p>
-    A dog's nutritional and daily-care needs can change as it gets older. Puppies generally need
-    nutrition that supports growth and development, while adult dogs require a balanced diet suited
-    to their activity level. Senior dogs may have different nutritional and lifestyle considerations.
-  </p>
-
-  <p>
-    Pet owners searching for <strong>dog age in human years</strong> are often also interested in
-    understanding how age affects everyday care. Although an age calculator cannot determine a
-    dog's exact health requirements, knowing the approximate life stage can provide useful context.
-  </p>
-
-  <p>
-    Dogs with digestive sensitivities, changing appetites, weight changes, or other concerns may
-    require individualized advice. A veterinarian can help determine the most appropriate diet and
-    care routine for an individual dog.
-  </p>
-
-  <p>
-    Regular exercise, fresh water, appropriate nutrition, mental enrichment, dental care, grooming,
-    and routine veterinary checkups all contribute to responsible pet ownership.
-  </p>
-
+  <h3 id="best-chew-toys">Choosing the Best Chew Toys for Dogs</h3>
+  <p>Chew toys aren’t just for fun—they promote dental health, relieve boredom, and reduce anxiety. Pet parents often wonder, <em>“what are the best chew toys for dogs?”</em> Look for durable, safe toys that match your dog’s size and chewing strength.</p>
+  <div class="product-box">
+      <img src="../images/dogchew.jpg" alt="Durable Chew Toys">
+    <br>
+    <a href="https://amzn.to/4nBOEAT" class="shop-btn" target="_blank">Shop Now</a>
+  </div>
 
   <h3 id="cat-lifespan">How Long Do Domestic Cats Live? Understanding Cat Lifespan</h3>
-
-  <p>
-    Cats also age differently from humans, which is why many owners search for a <strong>cat age
-    calculator</strong> or ask, <em>“How old is my cat in human years?”</em> A cat's first few
-    years represent a significant period of development, followed by a longer adult stage.
-  </p>
-
-  <p>
-    Domestic cats can live for many years, although lifespan varies from one cat to another.
-    Genetics, lifestyle, nutrition, environment, preventive healthcare, and whether a cat lives
-    primarily indoors or outdoors can all influence longevity.
-  </p>
-
-  <p>
-    Understanding your cat's approximate age in human years can make it easier to recognize its
-    current life stage. A young cat may have different behavioral and nutritional needs than an
-    adult or senior cat.
-  </p>
-
-  <p>
-    Common searches related to this topic include <strong>cat years to human years</strong>,
-    <strong>cat age in human years</strong>, <strong>cat age calculator</strong>, and
-    <strong>how old is my cat in human years</strong>.
-  </p>
-
+  <p>Cats are mysterious, elegant, and affectionate companions. But how long do domestic cats live? On average, indoor cats live 12–16 years, while some can reach over 20 years! Knowing your cat’s age in cat years to human years can guide feeding, grooming, and activity decisions.</p>
+  <div class="product-box">
+     <img src="../images/catgroom.jpg" alt="Cat groomings">
+    <br>
+    <a href="https://amzn.to/46DzfsA" class="shop-btn" target="_blank">Shop Now</a>
+  </div>
 
   <h3 id="cat-age-human">1 Cat Year to Human Years: Decoding Cat Age</h3>
-
-  <p>
-    Many people ask how to convert <strong>1 cat year to human years</strong>. A commonly used
-    estimate is that a one-year-old cat is approximately equivalent to a teenager in human
-    development, while a two-year-old cat is roughly comparable to a young adult.
-  </p>
-
-  <p>
-    After the first two years, each additional cat year is often estimated as approximately four
-    human years. This is a simplified comparison and should not be interpreted as an exact
-    biological measurement.
-  </p>
-
+  <p>Ever wondered how to convert 1 cat year to human years? A general guide:</p>
   <ul>
-    <li><strong>1 cat year:</strong> approximately equivalent to a young human teenager.</li>
-    <li><strong>2 cat years:</strong> approximately equivalent to a young adult.</li>
-    <li><strong>Each additional year:</strong> often estimated at around four human years.</li>
+    <li>First 2 years = ~24 human years</li>
+    <li>Each additional year = ~4 human years</li>
   </ul>
+  <p>This helps you understand your cat’s behavior and health needs at different life stages.</p>
+  <div class="product-box">
+     <img src="../images/cathome.jpg" alt="cathouse">
+    <br>
+    <a href="https://amzn.to/42hqJOJ" class="shop-btn" target="_blank">Shop Now</a>
+  </div>
 
-  <p>
-    These estimates are useful for understanding general life stages, but individual cats can age
-    differently. Breed, genetics, health, lifestyle, and environment can all influence a cat's
-    development and longevity.
-  </p>
-
-
-  <h3 id="best-cat-food-sensitive-stomach">Cat Age, Nutrition & Health</h3>
-
-  <p>
-    A cat's age can influence its nutritional and lifestyle needs. Kittens are growing rapidly and
-    require appropriate nutrition for development. Adult cats generally need a balanced diet that
-    supports their activity level, while senior cats may benefit from closer monitoring of weight,
-    appetite, hydration, mobility, and other changes.
-  </p>
-
-  <p>
-    Searching for the <strong>best cat food for sensitive stomach</strong> or information about
-    senior cat nutrition is common among pet owners. However, digestive problems and other health
-    concerns can have many causes, so persistent symptoms should be discussed with a veterinarian.
-  </p>
-
-  <p>
-    Age-appropriate feeding, clean drinking water, regular activity, dental care, grooming, and
-    routine veterinary examinations are important parts of responsible cat care.
-  </p>
-
+  <h3 id="best-cat-food-sensitive-stomach">Best Cat Food for Sensitive Stomach</h3>
+  <p>Cats with sensitive digestion need special diets. We recommend cat foods that use gentle proteins and low-irritant ingredients.</p>
+  <div class="product-box">
+     <img src="../images/catsen.jpg" alt="Sensitive Stomach Cat Food">
+    <br>
+    <a href="https://amzn.to/4mBK1W3" class="shop-btn" target="_blank">Shop Now</a>
+  </div>
 
   <h3 id="small-pets">Small Pets: Hamsters, Rabbits, and Beyond</h3>
-
-  <p>
-    Dogs and cats are not the only animals whose ages can be compared with human years. Small pets
-    such as <strong>hamsters, rabbits, parrots, and other birds</strong> have their own life
-    expectancies and developmental stages.
-  </p>
-
-  <p>
-    Because many small animals have much shorter or very different lifespans than humans, their
-    age can appear to progress quickly. This is why searches such as <strong>hamster age to human
-    years</strong>, <strong>rabbit age in human years</strong>, and <strong>parrot age
-    calculator</strong> are popular among pet owners.
-  </p>
-
+  <p>Not only dogs and cats deserve attention—small pets like hamsters, rabbits, and birds have unique needs. Curious about <em>“hamster age to human years”</em> or <em>“2 year old hamster in human years”</em>? Understanding these conversions helps you care for them properly.</p>
   <ul>
-    <li><strong>Hamsters:</strong> They generally have relatively short lifespans and mature quickly.</li>
-    <li><strong>Rabbits:</strong> Domestic rabbits can live for many years with appropriate care.</li>
-    <li><strong>Parrots:</strong> Some parrot species can have considerably longer lifespans than many other household pets.</li>
-    <li><strong>Other birds:</strong> Lifespan varies substantially depending on species and individual care.</li>
+    <li><strong>Hamsters:</strong> Syrian and dwarf hamsters age fast—1 month = roughly 2–3 human years.</li>
+    <li><strong>Rabbits:</strong> Most domestic rabbits live 8–12 years.</li>
+    <li><strong>Parrots &amp; Birds:</strong> Some parrots live over 50 years!</li>
   </ul>
+  <div class="product-box">
+     <img src="../images/hams1.jpg" alt="Hamster Toys, Bedding & Food">
+    <br>
+    <a href="https://amzn.to/4ofBCZZ" class="shop-btn" target="_blank">Shop Now</a>
+  </div>
+  <div class="product-box">
+     <img src="../images/rabs1.jpg" alt="Rabbit Chew Toys & Food">
+    <br>
+    <a href="https://amzn.to/3VIqoAR" class="shop-btn" target="_blank">Shop Now</a>
+  </div>
+   <div class="product-box">
+     <img src="../images/rabs2.jpg" alt="Rabbit Chew Toys & Food">
+    <br>
+    <a href="https://amzn.to/3IIpDEP" class="shop-btn" target="_blank">Shop Now</a>
+  </div>
+  <div class="product-box">
+     <img src="../images/parrot.jpg" alt="Parrot Perches & Toys">
+    <br>
+    <a href="https://amzn.to/3WcmDUj" class="shop-btn" target="_blank">Shop Now</a>
+  </div>
 
-  <p>
-    Since different species age at different rates, a single formula cannot accurately represent
-    every animal. Species-specific estimates are therefore more useful than applying one universal
-    “multiply by seven” rule.
-  </p>
-
-
-  <h3 id="hamster-age">Hamster Age Calculator & Age Charts</h3>
-
-  <p>
-    Hamsters are small animals with relatively short lifespans, which makes their development seem
-    very fast when compared with humans. Pet owners frequently search for a <strong>hamster age
-    calculator</strong>, <strong>hamster age to human years</strong>, or a <strong>hamster age
-    chart</strong> to better understand their pet's life stage.
-  </p>
-
-  <p>
-    A hamster's age can be considered in terms of its species, size, development, and expected
-    lifespan. Syrian hamsters and dwarf hamster varieties can have different characteristics, so
-    age comparisons should be treated as approximate rather than exact.
-  </p>
-
-  <p>
-    If you are wondering about a <strong>1-year-old hamster in human years</strong> or a
-    <strong>2-year-old hamster in human years</strong>, remember that human-equivalent calculations
-    are educational estimates. They should not be used to determine the health or biological age
-    of an individual hamster.
-  </p>
-
-
-  <h3 id="best-hamster-cages">Understanding Hamster Life Stages</h3>
-
-  <p>
-    A hamster's age is only one part of understanding its needs. Young hamsters, mature hamsters,
-    and older hamsters may differ in activity levels, behavior, sleeping patterns, and general
-    requirements.
-  </p>
-
-  <p>
-    Responsible hamster care includes providing a suitable living environment, appropriate food,
-    clean water, opportunities for natural behaviors, exercise, and regular observation of changes
-    in health or behavior.
-  </p>
-
-  <p>
-    Because hamsters are small prey animals, changes such as unusual inactivity, changes in eating
-    or drinking, weight loss, breathing difficulties, or significant behavioral changes should not
-    simply be assumed to be caused by old age. Professional veterinary advice may be appropriate.
-  </p>
-
-
-  <h3 id="best-toys">Pet Life Stages, Activity & Enrichment</h3>
-
-  <p>
-    Age is closely connected to activity and behavior, but every animal is an individual. Dogs,
-    cats, rabbits, hamsters, parrots, and other pets all benefit from environments that allow them
-    to express natural behaviors.
-  </p>
-
-  <p>
-    For dogs, age-appropriate walks, training, play, and mental stimulation can help support a
-    healthy lifestyle. Cats often benefit from opportunities to climb, scratch, explore, chase,
-    and interact with their surroundings. Small pets can also benefit from appropriate enrichment
-    that encourages natural movement and exploration.
-  </p>
-
-  <p>
-    As pets become older, owners may notice changes in energy levels or activity. This does not
-    necessarily mean an animal is unhealthy, but sudden or significant changes should be monitored
-    carefully.
-  </p>
-
-
-  <h3 id="best-dog-treats">Dog Age & Healthy Daily Habits</h3>
-
-  <p>
-    Knowing your dog's approximate human-equivalent age can help you think about healthy daily
-    habits. Puppies usually need structured training, socialization, and age-appropriate activity.
-    Adult dogs benefit from consistent exercise and mental stimulation, while senior dogs may need
-    activities adjusted to their comfort and mobility.
-  </p>
-
-  <p>
-    Healthy habits include maintaining an appropriate body weight, providing balanced nutrition,
-    keeping fresh water available, encouraging regular activity, and scheduling routine veterinary
-    care.
-  </p>
-
-  <p>
-    If your dog experiences a sudden change in appetite, weight, energy, behavior, or mobility,
-    an age calculator should not be used as a substitute for professional veterinary advice.
-  </p>
-
-
-  <h3 id="best-cat-accessories">Cat Age & Everyday Care</h3>
-
-  <p>
-    Understanding a cat's age in human years can provide useful context for everyday care.
-    Kittens generally require support during rapid growth, adult cats benefit from consistent
-    nutrition and activity, and senior cats may require closer monitoring of mobility, appetite,
-    weight, hydration, and behavior.
-  </p>
-
-  <p>
-    Regular grooming, dental care, exercise, environmental enrichment, and preventive veterinary
-    care can all contribute to a cat's overall wellbeing. Keeping track of your cat's age also
-    makes it easier to recognize when it is entering a different life stage.
-  </p>
-
-
-  <h3 id="best-foods">Feeding Pets at Different Life Stages</h3>
-
-  <p>
-    Nutrition is one of the most important aspects of responsible pet ownership. However, the
-    correct diet depends on the animal's species, age, size, activity level, health status, and
-    individual circumstances.
-  </p>
-
+  <h3 id="hamster-age">Hamster Age Calculator & Charts</h3>
+  <p>Wondering how old your hamster is in human years? You can find resources like:</p>
   <ul>
-    <li>
-      <strong>Dogs:</strong> Puppies, adult dogs, and senior dogs can have different nutritional
-      requirements.
-    </li>
-    <li>
-      <strong>Cats:</strong> Kittens, adult cats, and senior cats may require different nutritional
-      approaches.
-    </li>
-    <li>
-      <strong>Hamsters:</strong> Their diet should be appropriate for their species and balanced
-      with suitable food and fresh water.
-    </li>
-    <li>
-      <strong>Rabbits:</strong> Proper nutrition and access to appropriate forage are important
-      parts of rabbit care.
-    </li>
-    <li>
-      <strong>Birds and parrots:</strong> Dietary requirements vary considerably between species.
-    </li>
+    <li>Hamster age to human years calculator</li>
+    <li>Dwarf hamster age to human years charts</li>
+    <li>1-year-old hamster in human years guide</li>
   </ul>
+  <div class="product-box">
+     <img src="../images/hams3.jpg" alt="Hamster Cage Accessories">
+    <br>
+    <a href="https://amzn.to/46F3Q96" class="shop-btn" target="_blank">Shop Now</a>
+  </div>
 
-  <p>
-    A pet age calculator can help identify a general life stage, but it cannot determine the ideal
-    diet for an individual animal. For pets with medical conditions, allergies, digestive issues,
-    or unusual changes in appetite, professional advice is recommended.
-  </p>
+  <h3 id="best-hamster-cages">Best Hamster Cages</h3>
+  <p>Hamsters thrive best in cages that are spacious, safe, and easy to clean. Our guide covers the top cages available online.</p>
+  <div class="product-box">
+     <img src="../images/hammy.jpg" alt="Best Hamster Cages">
+    <br>
+    <a href="https://amzn.to/46NRP1b" class="shop-btn" target="_blank">Shop Now</a>
+  </div>
 
+  <h3 id="best-toys">Best Toys for Cats, Dogs, and Small Pets: Keeping Them Active</h3>
+  <p>Playtime is essential for all pets. Toys provide mental stimulation, prevent destructive behavior, and strengthen your bond.</p>
+  <ul>
+    <li>Dogs: Chew toys, puzzle toys, fetch toys</li>
+    <li>Cats: Catnip toys, interactive laser toys, scratching posts</li>
+    <li>Hamsters &amp; Small Pets: Wheels, tunnels, chew sticks</li>
+  </ul>
+  <div class="product-box">
+     <img src="../images/cattoy.jpg" alt="Fun Toys for All Pets">
+    <br>
+    <a href="https://amzn.to/3VCdK6t" class="shop-btn" target="_blank">Shop Now</a>
+  </div>
+  <div class="product-box">
+     <img src="../images/dogtoy.jpg" alt="Fun Toys for All Pets">
+    <br>
+    <a href="https://amzn.to/3KnzoZP" class="shop-btn" target="_blank">Shop Now</a>
+  </div>
+  <div class="product-box">
+     <img src="../images/cattoy2.jpg" alt="Fun Toys for All Pets">
+    <br>
+    <a href="https://amzn.to/486ClI0" class="shop-btn" target="_blank">Shop Now</a>
+  </div>
+  <div class="product-box">
+     <img src="../images/doghomee.jpg" alt="Fun Toys for All Pets">
+    <br>
+    <a href="https://amzn.to/3Wcie3I" class="shop-btn" target="_blank">Shop Now</a>
+  </div>
+   <div class="product-box">
+     <img src="../images/catscratch.jpg" alt="Fun Toys for All Pets">
+    <br>
+    <a href="https://amzn.to/46Kgtjq" class="shop-btn" target="_blank">Shop Now</a>
+  </div>
+
+  <h3 id="best-dog-treats">Best Dog Treats</h3>
+  <p>Healthy treats reward good behavior while keeping your dog fit. Look for low-fat, protein-rich options.</p>
+  <div class="product-box">
+     <img src="../images/dogt.jpg" alt="Healthy Dog Treats">
+    <br>
+    <a href="https://amzn.to/3IBmM0E" class="shop-btn" target="_blank">Shop Now</a>
+  </div>
+
+  <h3 id="best-cat-accessories">Most Popular Cat Accessories</h3>
+  <p>Cat owners love accessories that keep their feline friends entertained and comfortable. From climbing trees to cozy beds, we’ve listed the most popular picks.</p>
+  <div class="product-box">
+     <img src="../images/catwater.jpg" alt="Cat Accessories">
+    <br>
+    <a href="https://amzn.to/4pHVSF7" class="shop-btn" target="_blank">Shop Now</a>
+  </div>
+
+  <h3 id="best-foods">Feeding Your Furry and Feathered Friends: Sensitive Stomachs Made Simple</h3>
+  <p>Pets with sensitive stomachs need special attention. Choosing the right food can prevent digestive issues and keep them happy.</p>
+  <ul>
+    <li>Dogs: <a href="#best-dog-food-sensitive-stomach">Best dog food for sensitive stomach</a></li>
+    <li>Cats: <a href="#best-cat-food-sensitive-stomach">Best cat food for sensitive stomach</a></li>
+    <li>Small pets: Nutritious pellets, fresh vegetables, and clean water</li>
+  </ul>
+  <div class="product-box">
+     <img src="../images/rfood.jpg" alt="Hamster & Rabbit Food">
+    <br>
+    <a href="https://amzn.to/48GTisB" class="shop-btn" target="_blank">Shop Now</a>
+  </div>
 
   <h3 id="age-comparisons">Dog to Human Age, Cat to Human Age, & Other Pet Age Comparisons</h3>
-
-  <p>
-    Comparing animal ages with human ages is a simple way to make pet life stages easier to
-    understand. The idea behind a <strong>pet age calculator</strong> is to translate an animal's
-    chronological age into an approximate human-equivalent age.
-  </p>
-
-  <p>
-    Common searches include <strong>dog to human age</strong>, <strong>cat to human age</strong>,
-    <strong>animal age calculator</strong>, <strong>pet age calculator</strong>, <strong>dog years
-    calculator</strong>, <strong>cat years calculator</strong>, and <strong>animal years to human
-    years</strong>.
-  </p>
-
-  <p>
-    However, there is no single formula that works perfectly for every animal. Dogs, cats, rabbits,
-    hamsters, horses, snakes, parrots, fish, and other animals have different biological
-    development patterns and lifespans.
-  </p>
-
-  <p>
-    The estimates provided by this calculator are intended for general information and comparison.
-    They can help you understand the approximate stage of your pet's life without claiming that the
-    animal has an exact biological equivalent in human years.
-  </p>
-
+  <p>Understanding your pet’s age in human years isn’t just curiosity—it’s crucial for:</p>
   <ul>
-    <li><strong>Dog age calculator:</strong> Estimates a dog's age in human years.</li>
-    <li><strong>Cat age calculator:</strong> Estimates a cat's age using common age-conversion methods.</li>
-    <li><strong>Hamster age calculator:</strong> Provides an approximate comparison for a fast-aging small pet.</li>
-    <li><strong>Rabbit age calculator:</strong> Gives a general human-year comparison for rabbits.</li>
-    <li><strong>Bird and parrot age:</strong> Requires consideration of species because lifespans vary considerably.</li>
+    <li>Proper nutrition planning</li>
+    <li>Preventive healthcare</li>
+    <li>Selecting age-appropriate toys and activities</li>
   </ul>
+  <div class="product-box">
+     <img src="../images/dctoy.jpg" alt="Age-Appropriate Toys">
+    <br>
+    <a href="https://amzn.to/46tuyCT" class="shop-btn" target="_blank">Shop Now</a>
+  </div>
 
-
-  <h3 id="conclusion">Conclusion: Understanding Your Pet's Age</h3>
-
-  <p>
-    Whether you have a dog, cat, hamster, rabbit, horse, snake, parrot, fish, or another companion
-    animal, understanding its approximate age in human years can make pet ownership more meaningful.
-    An <strong>animal age calculator</strong> provides a convenient starting point for comparing
-    different life stages and learning more about how pets age.
-  </p>
-
-  <p>
-    Remember that these calculations are estimates. Real biological aging depends on species,
-    genetics, breed, size, lifestyle, nutrition, environment, and overall health. A human-year
-    comparison should therefore be used as an educational tool rather than a medical measurement.
-  </p>
-
-  <p>
-    Use the calculator above to estimate your pet's human-equivalent age, compare your age with your
-    animal companion, and explore the different stages of pet life. For health concerns or
-    significant changes in your pet's behavior, appetite, weight, mobility, or energy, consult a
-    qualified veterinarian.
-  </p>
-
-  <p>
-    <strong>Related searches:</strong> animal age calculator, pet age calculator, dog age calculator,
-    dog years to human years, dog age in human years, cat age calculator, cat years to human years,
-    hamster age calculator, hamster age to human years, rabbit age in human years, parrot age
-    calculator, pet age chart, animal years to human years, and how old is my pet in human years.
-  </p>
-</section>
+  <h3 id="conclusion">Conclusion: Happy, Healthy Pets Start with Understanding Their Age</h3>
+  <p>Whether it’s a playful puppy, a mischievous kitten, a hamster, or a senior parrot, knowing your pet’s age and needs helps you provide a longer, healthier, and more fulfilling life. Combine this knowledge with the right toys, food, and accessories, and your pets will thrive for years to come!</p>
+ </section>
 
 <!-- Smooth Scroll + Highlight Script -->
 <script>
@@ -933,8 +1325,25 @@ body.dark-mode .calc-inputs select option {
   color: #ffffff;
 }
 
-</style>
+/* Dark mode for shop buttons */
+body.dark-mode a.shop-btn {
+  background: linear-gradient(135deg, #9b5de5, #7a3dc0); /* purple gradient */
+  color: #FFF; /* white text */
+  box-shadow: 0 0 25px rgba(155, 93, 229, 0.25);
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  display: inline-block;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
 
+body.dark-mode a.shop-btn:hover {
+  box-shadow: 0 0 35px rgba(155, 93, 229, 0.4);
+  transform: translateY(-2px);
+}
+</style>
+  
 <script>
 const calculateBtn = document.getElementById('calculateBtn');
 const resultsDiv = document.getElementById('results');
@@ -1084,6 +1493,6 @@ hamburger.addEventListener('click', () => {
   if (toggleDesktop) toggleDesktop.addEventListener('click', toggleDarkMode);
   if (toggleMobile) toggleMobile.addEventListener('click', toggleDarkMode);
 </script>
-
+  
 </body>
 </html>
